@@ -89,3 +89,26 @@ cp configs/nvim/aura.lua $HOME/.config/nvim/lua/plugins
 
 ######### Step 7 - Install ohmyposh ###############
 
+curl -s https://ohmyposh.dev/install.sh | bash -s
+
+# Get config file - (Can choose whichever theme)
+#oh-my-posh config export --config https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/tokyonight_storm.omp.json --output ~/.tokyonight_storm.omp.json
+
+# Use custom aura theme from git
+cp configs/ohmyposh/aura.omp.json ~/.aura.omp.json
+
+# Set config in .zshrc
+eval "$(oh-my-posh init zsh --config ~/.aura.omp.json)"
+
+######### Step 8 - Install Antidote ############
+
+git clone --depth=1 https://github.com/mattmc3/antidote.git ${ZDOTDIR:-~}/.antidote
+
+# Add Plugins
+touch ~/.zsh_plugins.txt
+echo "zsh-users/zsh-history-substring-search" > ~/.zsh_plugins.txt
+antidote load
+
+######### Step 9 - Install zellij ##########
+
+cargo install --locked zellij

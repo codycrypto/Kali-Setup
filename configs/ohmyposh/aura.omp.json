@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "accent1_purple": "#a277ff",
+    "accent20_purple_selection_alpha": "#3d375e7f",
+    "accent38_purple_selection_no_alpha": "#29263c",
+    "accent2_green": "#61ffca",
+    "accent3_orange": "#ffca85",
+    "accent6_pink": "#f694ff",
+    "accent32_blue": "#82e2ff",
+    "accent5_red": "#ff6767",
+    "accent7_white_foreground": "#edecee",
+    "accent8_gray_comments": "#6d6d6d",
+    "accent12_black_background": "#15141b",
+    "t_background": "p:accent12_black_background"
+  },
+  "secondary_prompt": {
+    "template": "➜ ",
+    "foreground": "p:accent32_blue",
+    "background": "transparent"
+  },
+  "transient_prompt": {
+    "template": "➜ ",
+    "foreground": "p:accent32_blue",
+    "background": "p:t_background"
+  },
+  "upgrade": {
+    "source": "cdn",
+    "interval": "168h",
+    "auto": false,
+    "notice": false
+  },
+  "console_title_template": " {{ .Folder }} :: {{if .Root}}Admin{{end}}",
+  "terminal_background": "p:t_background",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "➜ ",
+          "foreground": "p:accent32_blue",
+          "background": "transparent",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "style": "folder"
+          },
+          "template": "<b>{{ .Path }}</b> <p:accent32_blue>⚡</>",
+          "foreground": "p:accent1_purple",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "options": {
+            "branch_icon": "\ue725 ",
+            "fetch_status": true
+          },
+          "template": "({{ .HEAD}})",
+          "foreground": "p:accent32_blue",
+          "type": "git",
+          "style": "plain",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:accent5_red{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0)}}p:accent32_blue {{ end }}",
+            "{{ if gt .Ahead 0 }}p:accent32_blue{{ end }}",
+            "{{ if gt .Behind 0 }}p:accent32_blue{{ end }}"
+          ]
+        },
+        {
+          "template": " \uf00d",
+          "foreground": "p:accent5_red",
+          "type": "status",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "template": "\ue718 {{ .Full }} ",
+          "foreground": "p:accent2_green",
+          "type": "node",
+          "style": "plain"
+        },
+        {
+          "template": "\ue73d {{ .Full }} ",
+          "foreground": "p:accent32_blue",
+          "type": "php",
+          "style": "plain"
+        },
+        {
+          "template": "\ue235 {{ .Full }}",
+          "foreground": "p:accent3_orange",
+          "type": "python",
+          "style": "plain"
+        },
+        {
+          "template": "\ue624 {{ .Full }}",
+          "foreground": "p:accent1_purple",
+          "type": "julia",
+          "style": "plain"
+        },
+        {
+          "template": "\ue791 {{ .Full}}",
+          "foreground": "p:accent5_red",
+          "type": "ruby",
+          "style": "plain"
+        },
+        {
+          "template": "\ufcd1 {{ .Full}}",
+          "foreground": "p:accent32_blue",
+          "type": "go",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "template": "\u25b6",
+          "foreground": "p:accent2_green",
+          "type": "text",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 4,
+  "final_space": true
+}

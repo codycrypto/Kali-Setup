@@ -112,3 +112,7 @@ antidote load
 ######### Step 9 - Install zellij ##########
 
 cargo install --locked zellij
+mkdir ~/.config/zellij/themes
+cp configs/zellij/themes/astral.kdl ~/.config/zellij/themes
+echo 'theme "astral"' ~/.config/zellij/config.kdl
+
